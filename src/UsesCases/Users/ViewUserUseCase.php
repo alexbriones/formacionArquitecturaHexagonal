@@ -8,6 +8,9 @@
 
 namespace UsesCases\Users;
 
+require 'ViewUserRequest.php';
+require 'ViewUserResponse.php';
+
 class ViewUserUseCase {
 
     /**
@@ -20,15 +23,18 @@ class ViewUserUseCase {
         $this->userRepository = $userRepository;
     }
 
-    public function viewUser($request)
+
+    public function viewUser(ViewUserRequest $request)
     {
-        $this->createResponse($this->findUserById($request->getId()));
+        return $this->createResponse($this->findUserById($request->userId));
     }
 
     public function createResponse($user)
     {
         $response = new ViewUserResponse();
         $response->user = $user;
+
+        return $response;
     }
 
     public function findUserById($id) {

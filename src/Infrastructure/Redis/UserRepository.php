@@ -8,6 +8,8 @@
 
 namespace Infrastructure\Redis;
 
+require 'Domain/UserRepository.php';
+
 
 class UserRepository implements \Domain\UserRepository {
 
